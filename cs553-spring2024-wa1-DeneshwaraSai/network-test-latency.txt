@@ -1,0 +1,15 @@
+
+www.google.com 18.839
+www.youtube.com 23.565
+www.iit.edu 37.717
+www.walmart.com 160.444
+www.oracle.com 21.525
+www.microsoft.com 24.126
+www.apple.com 16.164
+www.primevideo.com 19.000
+www.amazon.com 17.521
+www.facebook.com 18.137
+www.linkedin.com 15.512
+www.wikipedia.org 80.550
+www.github.com 39.222
+www.udemy.com 16.655

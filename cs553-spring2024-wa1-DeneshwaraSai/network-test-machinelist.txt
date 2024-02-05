@@ -1,0 +1,15 @@
+www.google.com
+www.youtube.com
+www.iit.edu
+www.walmart.com
+www.oracle.com
+www.microsoft.com
+www.apple.com
+www.primevideo.com
+www.amazon.com
+www.facebook.com
+www.linkedin.com
+www.wikipedia.org
+www.github.com
+www.udemy.com
+www.coursera.org
