@@ -1,0 +1,8 @@
+1+0 records in
+1+0 records out
+1048576 bytes transferred in 0.001479 secs (708976335 bytes/sec)
+disk-benchmark-background.sh: line 25: wait: pid 32833 is not a child of this shell
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.000s

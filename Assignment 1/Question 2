@@ -1,0 +1,36 @@
+In the system configuration of the virtual machines, changing the number of processors may significantly change their behavior. The change may directly affect the following:
+Performance
+Resource allocation
+Resource Contention
+Parallel Processing 
+
+Performance:
+Maximum Processors:
+Scenario:
+A High-Concurrent Request API
+Consider an API that serves an high volume of concurrent requests, for example, Social media platform APIs, which handles feeds, likes, comments, shares and uploads.
+
+To handle the large number of concurrent API requests and also ensure high throughput, it is necessary to maximize the utilization of processors. This leads to high performance and the API can distribute its workload across multiple threads and reduce response times.
+
+Minimum Processors:
+Scenario:
+Consider a API, which saves the patient registration record. and also has low-volume of imcoming requests.
+
+Since the APIs encounters low traffic and also needs less utilization of hardware, so you can minimize the utilization of processors to optimize resource allocation. 
+
+Resource allocation
+Maximum Processors: 
+Scenario:
+considering a high-traffic web  microservice system which is responsible for handling incoming HTTP request for a web Application and performs various tasks like calculation, billing, authentication and CRUD operations. 
+
+To handle the high volume of incoming requests and ensure consistency in performance, it is mandatory to maximize the allocation of processors to the microservice. 
+
+By maximizing the allocation of processors, the microserivice can distribute its workload across all threads and cores to handle the high traffic efficiently, ensuring responsiveness and scalability.
+
+Minimum Processors:
+Scenario: Background Task Processor
+Considering a microservice responsible for executing background tasks, such as generating reports, transmitting emails, or processing data asynchronously. These tasks are not schedulars and can be processed in a deferred manner. In this scenario:
+
+Minimize Processors: 
+Since the background tasks are not time-critical and do not require immediate processing, you would want to minimize the allocation of processors to the microservice.
+ 
