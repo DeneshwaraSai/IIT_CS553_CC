@@ -1,0 +1,8 @@
+Threads,AverageLatency,Throughput
+Thread_1,2.256,30.8
+Thread_2,2.176,32.0
+Thread_4,2.225,31.3
+Thread_8,2.194,31.7
+Thread_16,2.214,31.4
+Thread_32,2.222,31.3
+Thread_64,2.362,29.4

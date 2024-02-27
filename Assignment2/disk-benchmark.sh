@@ -1,62 +1,43 @@
 #!/bin/bash
 
-# Define variables
-total_data_size="6G"
-num_files="128"
-file_block_size="4K"
-test_mode="rndrd"
-io_mode="sync"
-results_file="disk-sysbench_results.txt"
-extra_io_flag="--file-extra-flags=direct"
-> $results_file
+fileTotalSize="3G"
+numFiles="128"
+fileBlockSize="4096"
+fileTestMode="rndrd"
+fileIOMode="sync"
+extraIOFlag="--file-extra-flags=[direct]"
 
-for thread in 4 16 32; do
-    echo "Running sysbench with $thread threads..."
-    benchmarkCmd="sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode";
+outputFile="vm-disk-sysbench-results.csv"
+
+> $outputFile
+
+echo "Thread,TotalOperations,Throughput";
+for thread in 4 32; do
+    echo "Running sysbench with $thread threads... $(date)"
+    echo "---------------------- STARTED ---------------------------";
+
+    benchmarkCmd="sysbench fileio --file-total-size=$fileTotalSize --file-num=$numFiles --file-block-size=$fileBlockSize --threads=$thread --file-test-mode=$fileTestMode --file-io-mode=$fileIOMode";
     benchmarkPrepare=$($benchmarkCmd prepare)
-    echo "";
     benchmarkInfo=$($benchmarkCmd run)
-    echo $benchmarkInfo;
-    echo $benchmarkInfo >> $results_file;
-    echo "";
-    $benchmarkCmd cleanup
-    sleep 5
-    # sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode prepare
-    # sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode run >> $results_file
-    # sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode cleanup >> $results_file
+    echo "$benchmarkInfo"+"";
 
-    echo "Sysbench completed with $thread threads."
+    operations=$(echo "$benchmarkInfo" | grep -A 5 "File operations:")
+    throughput=$(echo "$benchmarkInfo" | grep -A 5 "Throughput:")
+    totalOperations=$(echo $operations | grep -A 5 'reads/s' | awk '{print $4}')
+    throughputInfo=$(echo $throughput | grep -A 5 'read, MiB/s' | awk '{print $4}')
+
+    echo "-------------------------------------------------";
+    echo $operations;
+    echo $throughput;
+    echo $totalOperations;
+    echo $throughputInfo;
+    echo "-------------------------------------------------";
+
+    $benchmarkCmd cleanup
+    sleep 3
+    echo "Thread_$thread, $totalOperations, $throughputInfo" >> $outputFile;
+    echo "Sysbench completed with $thread threads. $(date)"
+    echo "---------------------- ENDED ---------------------------";
 done
 
 echo "Strong scaling study completed."
-
-
-
-
-
-
-# for thread in 16; do
-#     echo "Running sysbench with $thread threads..."
- 
-#     sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode prepare
-
-#     echo "Sysbench completed with $thread threads."
-# done
-
-# Perform strong scaling study
-# for thread in 16; do
-#     echo "Running sysbench with $thread threads..."
- 
-#     sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode run >> $results_file
-
-#     echo "Sysbench completed with $thread threads."
-# done
-
-# Perform strong scaling study
-# for thread in 16; do
-#     echo "Running sysbench with $thread threads..."
- 
-#     sysbench fileio --file-total-size=$total_data_size --file-num=$num_files --file-block-size=$file_block_size --threads=$thread --file-test-mode=$test_mode --file-io-mode=$io_mode cleanup >> $results_file
-
-#     echo "Sysbench completed with $thread threads."
-# done

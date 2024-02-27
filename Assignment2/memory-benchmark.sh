@@ -1,6 +1,7 @@
 #!/bin/bash
 
-outputFile="memory-results.txt";
+outputFile="baremetal-memory-benchmark-results.csv";
+logFile="baremetal-memory-benchmark-logFile.txt";
 
 memoryBlockSize='1K';
 memoryTotalSize=120;
@@ -10,9 +11,14 @@ memoryAccessMode='rnd';
 touch $outputFile;
 > $outputFile;
 
+touch $logFile;
+> $logFile;
+
 for thread in 1 2 4 8 16 32 64; do
-    echo "----------STARTED----------"; 
-    benchmarkCmd="sysbench memory --memory-block-size=$memoryBlockSize --memory-total-size=${memoryTotalSize}G --memory-oper=$memoryOperation --memory-access-mode=$memoryAccessMode --memory-scope=global --threads=$thread"
+    echo "----------STARTED----------";
+    benchmarkCmd="sysbench memory --memory-block-size=$memoryBlockSize --memory-total-size=${memoryTotalSize}G --memory-oper=$memoryOperation --memory-access-mode=$memoryAccessMode --threads=$thread"
+    echo "$benchmarkCmd";
+    echo "$benchmarkCmd" >> $logFile;
     benchmartInfo=$($benchmarkCmd run)
     echo "$benchmartInfo"+"";
 
@@ -21,7 +27,8 @@ for thread in 1 2 4 8 16 32 64; do
 
     throughputinfo=$(echo "$benchmartInfo" | tr -d '()' | grep "transferred" | awk '{print $4}');
     echo "transferred : $throughputinfo \n";
-    echo "Thread_$thread $operationInfo $throughputinfo" >> $outputFile;
+    echo "operationInfo : $operationInfo \n";
     echo "Thread_$thread $operationInfo $throughputinfo";
+    echo "Thread_$thread, $operationInfo, $throughputinfo" >> $outputFile;
     echo "----------ENDED----------\n";
 done

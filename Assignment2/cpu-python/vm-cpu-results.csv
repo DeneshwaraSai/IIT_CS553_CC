@@ -1,0 +1,8 @@
+Threads,AvgLatency,Events
+Thread_1,28.36,35.23
+Thread_2,28.41,70.30
+Thread_4,28.26,141.43
+Thread_8,56.19,142.22
+Thread_16,112.01,142.08
+Thread_32,223.22,142.03
+Thread_64,442.98,142.13

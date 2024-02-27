@@ -1,0 +1,7 @@
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=1
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=2
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=4
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=8
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=16
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=32
+sysbench memory --memory-block-size=1K --memory-total-size=120G --memory-oper=read --memory-access-mode=rnd --threads=64

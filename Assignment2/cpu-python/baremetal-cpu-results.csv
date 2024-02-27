@@ -1,0 +1,27 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Threads, AvgLatency, Events\n",
+    "Thread_1, 28.12, 35.55\n",
+    "Thread_2, 28.11, 71.11\n",
+    "Thread_4, 28.09, 142.22\n",
+    "Thread_8, 28.10, 284.44\n",
+    "Thread_16, 28.39, 562.94\n",
+    "Thread_32, 31.87, 1001.75\n",
+    "Thread_64, 48.51, 1315.38"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

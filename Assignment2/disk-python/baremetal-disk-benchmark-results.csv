@@ -1,0 +1,8 @@
+Thread,TotalOperations,Throughput
+Thread_1,7880.77,30.78
+Thread_2,15963.34,62.36
+Thread_4,29184.44,114.00
+Thread_8,47314.50,184.82
+Thread_16,65851.77,257.23
+Thread_32,78841.00,307.97
+Thread_64,78842.74,307.98

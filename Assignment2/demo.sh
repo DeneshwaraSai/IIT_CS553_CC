@@ -1,6 +1,6 @@
 #!bin/bash 
 
-outputFile="cpu-results.txt"
+outputFile="cpu-results.csv"
 
 touch "$outputFile";
 > "$outputFile";
@@ -14,6 +14,7 @@ for thread in 1 2 4 8 16 32 64;do
     cpuSpeed=$(echo "$threadInfo" | grep -A 1 "CPU speed:")
     events=$(echo "$cpuSpeed" | grep -A 1 "events per second:" | awk '/events per second:/ {print $4}');
     echo "Events per seconds : $events";
-    echo "Thread_$thread $avgLatency $events" >> $outputFile;
-    echo "------- Ended $thread ---------";
+    echo "Latency Avg (ms): $avgLatency"
+    echo "Thread_$thread, $avgLatency, $events" >> $outputFile;
+    echo "------- Ended $thread ---------\n";
 done
